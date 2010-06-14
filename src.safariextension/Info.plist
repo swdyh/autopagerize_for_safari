@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>swdyh</string>
+	<key>CFBundleDisplayName</key>
+	<string>AutoPagerize</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.autopagerize.autppagerizeforsafari</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.1</string>
+	<key>CFBundleVersion</key>
+	<string>11</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Context Menu Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>autopagerize_toggle</string>
+				<key>Identifier</key>
+				<string>autopagerize_toggle</string>
+				<key>Title</key>
+				<string>AutoPagerize on/off</string>
+			</dict>
+		</array>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>autopagerize.user.js</string>
+				<string>yhoo_ac.user.js</string>
+				<string>google_image.user.js</string>
+				<string>twiiter.user.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>A browser Extension for auto loading paginated web pages</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://autopagerize.net/files/update.plist</string>
+	<key>Website</key>
+	<string>http://autopagerize.net/</string>
+</dict>
+</plist>
