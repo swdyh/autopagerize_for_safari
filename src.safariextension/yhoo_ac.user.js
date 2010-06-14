@@ -1,5 +1,5 @@
 (function() {
-    var re = /^http:\/\/search(\.auctions)?\.yahoo\.co\.jp\//
+    var re = /^http:\/\/search(\d+)?(\.auctions)?\.yahoo\.co\.jp\//
     if (re.test(location.href)) {
         AutoPagerize.addDocumentFilter(removeYahooRedirector)
         removeYahooRedirector(document)
