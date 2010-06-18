@@ -884,13 +884,13 @@ else if (isSafariExtension()) {
         safari.self.addEventListener('message', function(event) {
             if (event.name === 'settings') {
                 settings = event.message
-                if (!settings['exclude_patterns'] || !isExclude(settings['exclude_patterns'])) {
-                    safari.self.tab.dispatchMessage('siteinfoChannel', {url: location.href })
-                }
+                safari.self.tab.dispatchMessage('siteinfoChannel', {url: location.href })
             }
             else if (event.name === 'siteinfoChannel') {
-                var res = event.message
-                launchAutoPager(res)
+                if (!settings['exclude_patterns'] || !isExclude(settings['exclude_patterns'])) {
+                    var res = event.message
+                    launchAutoPager(res)
+                }
             }
             else if (event.name === 'toggleRequestChannel') {
                 if (ap) {
