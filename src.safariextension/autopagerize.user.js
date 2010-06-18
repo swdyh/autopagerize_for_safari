@@ -476,6 +476,10 @@ AutoPager.prototype.getNextURL = function(xpath, doc, url) {
 }
 
 AutoPager.prototype.canHandleCrossDomainRequest = function() {
+    if (isChromeExtension() || isSafariExtension()) {
+        return true
+    }
+
     if (!supportsFinalUrl()) {
         if (!isSameDomain(this.requestURL)) {
             this.error()
