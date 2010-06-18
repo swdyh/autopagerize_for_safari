@@ -5,7 +5,6 @@ var CACHE_EXPIRE = 24 * 60 * 60 * 1000
 var siteinfo = {}
 var launched = {}
 var settings = {}
-var displayMessageBar = true
 window.onload = init
 
 function init() {
