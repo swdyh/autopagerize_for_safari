@@ -1193,6 +1193,7 @@ function chromeCompatible() {
     GM_addStyle = function() {}
     uneval = function() {}
     fixResolvePath = function() {}
+    resolvePath = function (path, base) { return path }
 
     GM_xmlhttpRequest = function(opt) {
         var req = new XMLHttpRequest()
