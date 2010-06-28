@@ -8,9 +8,10 @@
         var ra = node.querySelectorAll('a[href]')
         for (var i = 0; i < ra.length; i++) {
             var a = ra[i]
-            var tmp = a.href.split('*-')
+            var tmp = a.href.split(/\*[-*]/)
             if (tmp.length == 2) {
-                a.href = tmp[1].replace(/^http%3A/, 'http:')
+                // a.href = tmp[1].replace(/^http%3A/, 'http:')
+                a.href = decodeURIComponent(tmp[1])
             }
         }
     }
