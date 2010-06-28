@@ -124,7 +124,7 @@ var AutoPager = function(info) {
         var frame = document.createElement('iframe')
         frame.style.display = 'none'
         frame.style.position = 'fixed'
-        frame.style.top = window.innerHeight - 25 + 'px'
+        frame.style.bottom = '0px'
         frame.style.left = '0px'
         frame.style.height = '25px'
         frame.style.border = '0px'
@@ -323,8 +323,6 @@ AutoPager.prototype.showLoading = function(sw) {
         this.updateIcon('loading')
         if (isSafariExtension() && settings['display_message_bar']) {
             this.messageFrame.src = safari.extension.baseURI + 'loading.html'
-            document.documentElement.style.overflowX = 'hidden'
-            this.messageFrame.style.top = window.innerHeight - 25 + 'px'
             this.messageFrame.style.display = 'block'
         }
     }
@@ -333,7 +331,6 @@ AutoPager.prototype.showLoading = function(sw) {
         if (isSafariExtension() && settings['display_message_bar']) {
             this.messageFrame.src = safari.extension.baseURI + 'loading.html'
             this.messageFrame.style.display = 'none'
-            document.documentElement.style.overflowX = ''
         }
     }
 }
@@ -500,7 +497,6 @@ AutoPager.prototype.terminate = function() {
         if (isSafariExtension()) {
             var mf = self.messageFrame
             mf.parentNode.removeChild(mf)
-            document.documentElement.style.overflowX = ''
         }
     }, 1500)
 }
@@ -510,13 +506,10 @@ AutoPager.prototype.error = function() {
     window.removeEventListener('scroll', this.scroll, false)
     if (isSafariExtension()) {
         var mf = this.messageFrame
-        document.documentElement.style.overflowX = 'hidden'
-        mf.style.top = window.innerHeight - 25 + 'px'
         mf.src = safari.extension.baseURI + 'error.html'
         mf.style = 'block'
         setTimeout(function() {
             mf.parentNode.removeChild(mf)
-            document.documentElement.style.overflowX = ''
         }, 5000)
     }
 }
