@@ -37,9 +37,9 @@
 			<key>End</key>
 			<array>
 				<string>autopagerize.user.js</string>
-				<string>yahoo_jp.user.js</string>
-				<string>google_image.user.js</string>
-				<string>twiiter.user.js</string>
+				<string>filter_js/twitter.user.js</string>
+				<string>filter_js/google_image.user.js</string>
+				<string>filter_js/yahoo_jp.user.js</string>
 			</array>
 		</dict>
 	</dict>
