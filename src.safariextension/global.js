@@ -40,9 +40,9 @@ function init() {
         }
     }, false)
 
-
     settings['display_message_bar'] = safari.extension.settings.getItem('display_message_bar')
     settings['exclude_patterns'] = safari.extension.settings.getItem('exclude_patterns')
+    settings['extension_path'] = safari.extension.baseURI
     safari.extension.settings.addEventListener('change', function(event) {
         settings[event.key] = event.target[event.key]
         safari.application.browserWindows.forEach(function(w) {
