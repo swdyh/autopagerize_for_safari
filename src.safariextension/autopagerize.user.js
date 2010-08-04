@@ -886,6 +886,7 @@ else if (isSafariExtension()) {
             }
             else if (event.name === 'siteinfoChannel') {
                 if (!settings['exclude_patterns'] || !isExclude(settings['exclude_patterns'])) {
+                    launchAutoPager(SITEINFO)
                     var res = event.message
                     launchAutoPager(res)
                 }
