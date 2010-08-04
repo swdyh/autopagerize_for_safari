@@ -32,6 +32,13 @@
 	</dict>
 	<key>Content</key>
 	<dict>
+		<key>Blacklist</key>
+		<array>
+			<string>https://mail.google.com/*</string>
+			<string>http://b.hatena.ne.jp/*</string>
+			<string>http://www.facebook.com/plugins/like.php*</string>
+			<string>http://api.tweetmeme.com/button.js*</string>
+		</array>
 		<key>Scripts</key>
 		<dict>
 			<key>End</key>
