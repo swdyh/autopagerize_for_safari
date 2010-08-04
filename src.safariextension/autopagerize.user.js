@@ -6,6 +6,8 @@
 // @include        https://*
 // @exclude        https://mail.google.com/*
 // @exclude        http://b.hatena.ne.jp/*
+// @exclude        http://www.facebook.com/plugins/like.php*
+// @exclude        http://api.tweetmeme.com/button.js*
 // ==/UserScript==
 //
 // auther:  swdyh http://d.hatena.ne.jp/swdyh/
