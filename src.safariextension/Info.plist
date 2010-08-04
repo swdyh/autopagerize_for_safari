@@ -45,7 +45,6 @@
 			<array>
 				<string>autopagerize.user.js</string>
 				<string>filter_js/twitter.user.js</string>
-				<string>filter_js/google_image.user.js</string>
 				<string>filter_js/yahoo_jp.user.js</string>
 			</array>
 		</dict>
