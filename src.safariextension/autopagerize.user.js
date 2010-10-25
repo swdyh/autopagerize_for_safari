@@ -629,11 +629,12 @@ function loadWithIframe(url, callback, errback) {
     document.body.appendChild(iframe)
     var contentload = function() {
         try {
-            if (!iframe.contentWindow.location.href) {
+            if (!iframe.contentDocument) {
                 errback()
             }
             else {
-                callback(iframe.contentDocument, iframe.contentWindow.location.href)
+                var loadedURL = iframe.contentWindow ? iframe.contentWindow.location.href : url
+                callback(iframe.contentDocument, loadedURL)
             }
             iframe.parentNode.removeChild(iframe)
         }
