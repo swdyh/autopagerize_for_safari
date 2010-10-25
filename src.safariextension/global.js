@@ -9,19 +9,19 @@ window.onload = init
 
 function init() {
     safari.application.addEventListener('message', function(event) {
-        if (event.name === 'siteinfoChannel') {
+        if (event.name === 'siteinfo') {
             var res = SITEINFO_IMPORT_URLS.reduce(function(r, url) {
                 return r.concat(siteinfo[url].info)
             }, []).filter(function(s) {
                 return event.message.url.match(s.url)
             })
-            event.target.page.dispatchMessage('siteinfoChannel', res)
+            event.target.page.dispatchMessage(event.name, res)
         }
         else if (event.name === 'launched') {
             launched[event.message.url] = true
         }
         else if (event.name === 'settings') {
-            event.target.page.dispatchMessage('settings', settings)
+            event.target.page.dispatchMessage(event.name, settings)
         }
     }, false)
 
@@ -36,7 +36,7 @@ function init() {
 
     safari.application.addEventListener('command', function(event) {
         if (event.command === 'autopagerize_toggle') {
-            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('toggleRequestChannel')
+            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('toggleRequest')
         }
     }, false)
 

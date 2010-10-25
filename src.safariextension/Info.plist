@@ -11,9 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.9</string>
+	<string>0.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>21</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
@@ -43,9 +43,8 @@
 		<dict>
 			<key>End</key>
 			<array>
+				<string>extension.js</string>
 				<string>autopagerize.user.js</string>
-				<string>filter_js/twitter.user.js</string>
-				<string>filter_js/yahoo_jp.user.js</string>
 			</array>
 		</dict>
 	</dict>
