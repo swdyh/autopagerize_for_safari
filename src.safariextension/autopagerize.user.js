@@ -18,7 +18,7 @@
 
 var DEBUG = false
 var BASE_REMAIN_HEIGHT = 400
-var MIN_REQUEST_PERIOD = 2000
+var MIN_REQUEST_INTERVAL = 2000
 var FORCE_TARGET_WINDOW = true // FIXME config
 var SITEINFO_IMPORT_URLS = [
     'http://wedata.net/databases/AutoPagerize/items.json',
@@ -170,8 +170,8 @@ AutoPager.prototype.request = function() {
     }
     var self = this
     var now = new Date()
-    if (this.reqTime && now - this.reqTime < MIN_REQUEST_PERIOD) {
-        setTimeout(function() { self.onScroll() }, MIN_REQUEST_PERIOD)
+    if (this.reqTime && now - this.reqTime < MIN_REQUEST_INTERVAL) {
+        setTimeout(function() { self.onScroll() }, MIN_REQUEST_INTERVAL)
         return
     }
     else {
