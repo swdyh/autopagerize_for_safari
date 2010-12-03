@@ -412,7 +412,7 @@ var linkFilter = function(doc, url) {
     })
 
     if (!isSameBase) {
-        var images = getElementsByXPath('descendant-or-self::img', doc)
+        var images = getElementsByXPath('descendant-or-self::img[@src]', doc)
         images.forEach(function(i) {
             i.src = resolvePath(i.getAttribute('src'), baseUrl)
         })
