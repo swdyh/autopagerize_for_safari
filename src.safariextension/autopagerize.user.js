@@ -97,6 +97,7 @@ function AutoPager(info) {
         this.getPageElementsBottom() ||
         (Math.round(scrollHeight * 0.8))
     this.remainHeight = scrollHeight - bottom + BASE_REMAIN_HEIGHT
+    this.reqTime = new Date()
     this.onScroll()
 
     var that = this
@@ -583,7 +584,10 @@ function resolvePath(path, base) {
     if (path.match(/^https?:\/\//)) {
         return path
     }
-    if (path.match(/^[^\/]/)) {
+    else if (path.match(/^\?/)) {
+        return base + path
+    }
+    else if (path.match(/^[^\/]/)) {
         return base.replace(/[^/]+$/, '') + path
     }
     else {
