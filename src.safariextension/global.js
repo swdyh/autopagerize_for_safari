@@ -18,7 +18,7 @@ function init() {
             event.target.page.dispatchMessage(event.name, res)
         }
         else if (event.name === 'launched') {
-            launched[event.message.url] = true
+            launched[removeHash(event.message.url)] = true
         }
         else if (event.name === 'settings') {
             event.target.page.dispatchMessage(event.name, settings)
@@ -26,30 +26,31 @@ function init() {
     }, false)
 
     safari.application.addEventListener('validate', function(event) {
-        if (event.command === 'autopagerize_toggle') {
-            var u = safari.application.activeBrowserWindow.activeTab.url
-            if (!launched[u]) {
-                event.target.disabled = true
-            }
+        var u = safari.application.activeBrowserWindow.activeTab.url
+        if (launched[removeHash(u)]) {
+            event.target.title = 'AutoPagerize ' + (settings.disable ? 'on' : 'off')
+        }
+        else {
+            event.target.disabled = true
         }
     }, false)
 
     safari.application.addEventListener('command', function(event) {
         if (event.command === 'autopagerize_toggle') {
-            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('toggleRequest')
+            dispatchMessageAll(settings.disable ? 'enableRequest' : 'disableRequest')
+            settings.disable = !settings.disable
+            safari.extension.settings.setItem('disable', settings.disable)
         }
     }, false)
 
     settings['display_message_bar'] = safari.extension.settings.getItem('display_message_bar')
     settings['exclude_patterns'] = safari.extension.settings.getItem('exclude_patterns')
     settings['extension_path'] = safari.extension.baseURI
+    settings['disable'] = safari.extension.settings.getItem('disable')
+
     safari.extension.settings.addEventListener('change', function(event) {
         settings[event.key] = event.target[event.key]
-        safari.application.browserWindows.forEach(function(w) {
-            w.tabs.forEach(function(t) {
-                t.page.dispatchMessage('updateSettings', settings)
-            })
-        })
+        dispatchMessageAll('updateSettings', settings)
     }, false)
 }
 
@@ -138,3 +139,18 @@ function get(url, callback, opt) {
     return xhr
 }
 
+function dispatchMessageAll(message, obj, urlpattern) {
+    safari.application.browserWindows.forEach(function(w) {
+        w.tabs.forEach(function(t) {
+            if (!urlpattern || urlpattern.match(t.url)) {
+                if (t.page) {
+                    t.page.dispatchMessage(message, obj)
+                }
+            }
+        })
+    })
+}
+
+function removeHash(str) {
+    return str ? str.replace(/#.+/, '') : str
+}
