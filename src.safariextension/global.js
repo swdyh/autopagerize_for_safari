@@ -3,7 +3,6 @@ var SITEINFO_IMPORT_URLS = [
 ]
 var CACHE_EXPIRE = 24 * 60 * 60 * 1000
 var siteinfo = {}
-var launched = {}
 var settings = {}
 window.onload = init
 
@@ -18,7 +17,6 @@ function init() {
             event.target.page.dispatchMessage(event.name, res)
         }
         else if (event.name === 'launched') {
-            launched[removeHash(event.message.url)] = true
         }
         else if (event.name === 'settings') {
             event.target.page.dispatchMessage(event.name, settings)
@@ -26,11 +24,13 @@ function init() {
     }, false)
 
     safari.application.addEventListener('validate', function(event) {
-        var u = safari.application.activeBrowserWindow.activeTab.url
-        if (launched[removeHash(u)]) {
-            event.target.title = 'AutoPagerize ' + (settings.disable ? 'on' : 'off')
+        try {
+            if (event.userInfo) {
+                var u = safari.application.activeBrowserWindow.activeTab.url
+                event.target.title = 'AutoPagerize ' + (settings.disable ? 'on' : 'off')
+            }
         }
-        else {
+        catch(e) {
             event.target.disabled = true
         }
     }, false)
@@ -149,8 +149,4 @@ function dispatchMessageAll(message, obj, urlpattern) {
             }
         })
     })
-}
-
-function removeHash(str) {
-    return str ? str.replace(/#.+/, '') : str
 }
