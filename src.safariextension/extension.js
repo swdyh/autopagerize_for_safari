@@ -23,6 +23,7 @@ function Extension() {
                 port.onMessage.addListener(callback)
             }
         })
+        chrome.extension.onRequest.addListener(callback)
     }
     else if (Extension.isFirefox()) {
         self.on('message', function(res) {
