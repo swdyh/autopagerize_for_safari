@@ -4,6 +4,8 @@
 <dict>
 	<key>Author</key>
 	<string>swdyh</string>
+	<key>Builder Version</key>
+	<string>6534.50</string>
 	<key>CFBundleDisplayName</key>
 	<string>AutoPagerize</string>
 	<key>CFBundleIdentifier</key>
@@ -11,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.2</string>
+	<string>0.3.3</string>
 	<key>CFBundleVersion</key>
-	<string>32</string>
+	<string>33</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
