@@ -1,5 +1,5 @@
 var SITEINFO_IMPORT_URLS = [
-    'http://wedata.net/databases/AutoPagerize/items.json',
+    'http://wedata.net/databases/AutoPagerize/items_all.json',
 ]
 var CACHE_EXPIRE = 24 * 60 * 60 * 1000
 var siteinfo = {}
