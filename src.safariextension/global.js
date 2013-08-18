@@ -1,5 +1,5 @@
 var SITEINFO_IMPORT_URLS = [
-    'http://wedata.net/databases/AutoPagerize/items_all.json',
+    'http://wedata.net/databases/AutoPagerize/items_all.json'
 ]
 var CACHE_EXPIRE = 24 * 60 * 60 * 1000
 var siteinfo = {}
@@ -9,7 +9,7 @@ window.onload = init
 function init() {
     var removeOldCache = function() {
         var cache = JSON.parse(localStorage.cacheInfo || '{}')
-        var oldUrl = 'http://wedata.net/databases/AutoPagerize/items.json'
+        var oldUrl = 'http://wedata.net/databases/AutoPagerize/items.json';
         delete cache[oldUrl]
         localStorage.cacheInfo == JSON.stringify(cache)
     }
@@ -51,10 +51,10 @@ function init() {
         }
     }, false)
 
-    settings['display_message_bar'] = safari.extension.settings.getItem('display_message_bar')
-    settings['exclude_patterns'] = safari.extension.settings.getItem('exclude_patterns')
-    settings['extension_path'] = safari.extension.baseURI
-    settings['disable'] = safari.extension.settings.getItem('disable')
+    settings.display_message_bar = safari.extension.settings.getItem('display_message_bar')
+    settings.exclude_patterns = safari.extension.settings.getItem('exclude_patterns')
+    settings.extension_path = safari.extension.baseURI
+    settings.disable = safari.extension.settings.getItem('disable')
 
     safari.extension.settings.addEventListener('change', function(event) {
         settings[event.key] = event.target[event.key]
@@ -64,7 +64,7 @@ function init() {
 
 function loadLocalSiteinfoCallback(data) {
     var url = 'http://wedata.net/databases/AutoPagerize/items_all.json'
-    var cache = JSON.parse(localStorage['cacheInfo'] || '{}')
+    var cache = JSON.parse(localStorage.cacheInfo || '{}')
     if (!cache[url]) {
         siteinfo[url] = {
             url: url,
@@ -72,7 +72,7 @@ function loadLocalSiteinfoCallback(data) {
             info: reduceWedataJSON(data)
         }
         cache[url] = siteinfo[url]
-        localStorage['cacheInfo'] = JSON.stringify(cache)
+        localStorage.cacheInfo = JSON.stringify(cache)
     }
     else {
         siteinfo[url] = cache[url]
@@ -87,7 +87,7 @@ function reduceWedataJSON(data) {
     }).filter(function(i) {
         return ('url' in i)
     })
-    if (info.length == 0) {
+    if (info.length === 0) {
         return []
     }
     else {
@@ -107,7 +107,7 @@ function reduceWedataJSON(data) {
 }
 
 function refreshSiteinfo() {
-    var cache = JSON.parse(localStorage['cacheInfo'] || '{}')
+    var cache = JSON.parse(localStorage.cacheInfo || '{}')
     SITEINFO_IMPORT_URLS.forEach(function(url) {
         if (!cache[url] || (cache[url].expire && new Date(cache[url].expire) < new Date())) {
             var callback = function(res) {
@@ -115,7 +115,7 @@ function refreshSiteinfo() {
                     return
                 }
                 var info = reduceWedataJSON(JSON.parse(res.responseText))
-                if (info.length == 0) {
+                if (info.length === 0) {
                     return
                 }
                 siteinfo[url] = {
@@ -124,7 +124,7 @@ function refreshSiteinfo() {
                     info: info
                 }
                 cache[url] = siteinfo[url]
-                localStorage['cacheInfo'] = JSON.stringify(cache)
+                localStorage.cacheInfo = JSON.stringify(cache)
             }
             try {
                 get(url, callback)
