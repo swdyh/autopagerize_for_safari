@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'plist'
 
-pub_file_dir = '/Users/youhei/dev/www/autopagerize.net/public/files'
+pub_file_dir = './heroku/public/files'
 
 def update_versions
   info = Plist::parse_xml('src.safariextension/Info.plist')
@@ -27,14 +27,17 @@ task :update do
   v = update_versions
   sy 'chmod 644 src.safariextz'
   sy 'xattr -d com.apple.quarantine src.safariextz'
-  sy "cp src.safariextz packages/autopagerize_for_safari-#{v}.safariextz"
-  sy "cp src.safariextz #{pub_file_dir}/autopagerize_for_safari.safariextz"
-  sy "cp packages/autopagerize_for_safari-#{v}.safariextz #{pub_file_dir}/"
-  sy "cp update.plist #{pub_file_dir}/"
 end
 
 desc 'deploy'
 task :deploy do
-  sy 'sh /Users/youhei/dev/www/autopagerize.net/dep.sh'
+  v = update_versions
+  sy "cp src.safariextz #{pub_file_dir}/autopagerize_for_safari.safariextz"
+  sy "cp src.safariextz packages/autopagerize_for_safari-#{v}.safariextz"
+  sy "cp packages/autopagerize_for_safari-#{v}.safariextz #{pub_file_dir}/"
+  sy "cp update.plist #{pub_file_dir}/"
+  puts
+  puts "  cd heroku"
+  puts '  git add public/files/update.plist public/files/autopagerize_for_safari*'
+  puts '  git push heroku master'
 end
-
