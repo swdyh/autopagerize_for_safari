@@ -7,10 +7,18 @@ var settings = {}
 window.onload = init
 
 function init() {
+    var removeOldCache = function() {
+        var cache = JSON.parse(localStorage.cacheInfo || '{}')
+        var oldUrl = 'http://wedata.net/databases/AutoPagerize/items.json'
+        delete cache[oldUrl]
+        localStorage.cacheInfo == JSON.stringify(cache)
+    }
+    removeOldCache()
+
     safari.application.addEventListener('message', function(event) {
         if (event.name === 'siteinfo') {
             var res = SITEINFO_IMPORT_URLS.reduce(function(r, url) {
-                return r.concat(siteinfo[url].info)
+                return siteinfo[url] ? r.concat(siteinfo[url].info) : r
             }, []).filter(function(s) {
                 return event.message.url.match(s.url)
             })
@@ -55,7 +63,7 @@ function init() {
 }
 
 function loadLocalSiteinfoCallback(data) {
-    var url = 'http://wedata.net/databases/AutoPagerize/items.json'
+    var url = 'http://wedata.net/databases/AutoPagerize/items_all.json'
     var cache = JSON.parse(localStorage['cacheInfo'] || '{}')
     if (!cache[url]) {
         siteinfo[url] = {
