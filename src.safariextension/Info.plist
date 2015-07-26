@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>swdyh</string>
 	<key>Builder Version</key>
-	<string>6534.59.8</string>
+	<string>10600.7.12</string>
 	<key>CFBundleDisplayName</key>
 	<string>AutoPagerize</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.5</string>
+	<string>0.3.6</string>
 	<key>CFBundleVersion</key>
-	<string>35</string>
+	<string>36</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
@@ -52,6 +52,8 @@
 	</dict>
 	<key>Description</key>
 	<string>A browser Extension for auto loading paginated web pages</string>
+	<key>DeveloperIdentifier</key>
+	<string>XH6FQ533G6</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
