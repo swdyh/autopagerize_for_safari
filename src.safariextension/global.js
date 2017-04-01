@@ -20,7 +20,12 @@ function init() {
             var res = SITEINFO_IMPORT_URLS.reduce(function(r, url) {
                 return siteinfo[url] ? r.concat(siteinfo[url].info) : r
             }, []).filter(function(s) {
-                return event.message.url.match(s.url)
+                try {
+                    return event.message.url.match(s.url)
+                }
+                catch(e) {
+                    return false
+                }
             })
             event.target.page.dispatchMessage(event.name, res)
         }
