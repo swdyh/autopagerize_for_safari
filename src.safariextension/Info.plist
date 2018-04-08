@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>swdyh</string>
 	<key>Builder Version</key>
-	<string>10600.7.12</string>
+	<string>12605.2.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>AutoPagerize</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.6</string>
+	<string>0.3.7</string>
 	<key>CFBundleVersion</key>
-	<string>36</string>
+	<string>37</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
